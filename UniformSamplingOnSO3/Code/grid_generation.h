@@ -10,7 +10,8 @@
 
 /* C */
 #include <math.h>
-//#include <stdbool.h>
+#include <direct.h>
+#include <string.h>
 
 
 /*** –¼‘O‹óŠÔ‚ÌéŒ¾ ***/
@@ -25,9 +26,6 @@ void pix2ang_nest( long, long, double*, double* );
 void mk_pix2xy( int*, int* );
 vector< double > grid_s1( int );
 bool healpix_wrapper( int );
-bool hopf2quat( vector< vector< double > > );
+bool hopf2quat( vector< vector< double > >, int );
 bool simple_grid( int );
-bool layered_grid( int );
-bool connectLayeredGrids( int );
-bool generateRfromQuaternion( int );
  

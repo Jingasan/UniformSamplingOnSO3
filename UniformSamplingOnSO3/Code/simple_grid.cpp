@@ -24,10 +24,10 @@ bool simple_grid( int resol ){
 	
 	/* メモリの確保 */
 	Psi_Points.resize( 0 );
-	
+
 
 	/*** 回転平面 S1 のサンプリング ***/
-
+	
 	/* 回転平面 S1 における点座標 Ψ を格納した配列の取得 */
 	Psi_Points = grid_s1( resol );	// 回転平面 S1 の等間隔サンプリング
 
@@ -36,7 +36,7 @@ bool simple_grid( int resol ){
 	
 
 	/*** 2次元球面 S2 のサンプリング ***/
-
+	
 	/* 2の解像度レベル乗 */
 	Nside = pow( 2, (double)resol );	// 解像度レベル 0：1, 解像度レベル 1：2, 解像度レベル 2：4, 解像度レベル 3：8, …
 
@@ -83,10 +83,24 @@ bool simple_grid( int resol ){
 			S3_Points.push_back( temp );
 		}
 	}
-	
 
+
+	/*** ディレクトリの作成 ***/
+	char DirPath[ 256 ];
+	sprintf( DirPath, DirectoryPath1 ); _mkdir( DirPath );
+	sprintf( DirPath, DirectoryPath2, resol ); _mkdir( DirPath );
+	sprintf( DirPath, DirectoryPath3, resol ); _mkdir( DirPath );
+	sprintf( DirPath, DirectoryPath4, resol ); _mkdir( DirPath );
+	int dirNum = ( S3_Points.size() - 1 ) / 10000;
+	for( int i = 0; i < dirNum + 1; i++ ){
+		sprintf( DirPath, DirectoryPath5, resol, i ); _mkdir( DirPath );
+		sprintf( DirPath, DirectoryPath6, resol, i ); _mkdir( DirPath );
+	}
+
+	
 	/*** サンプリング結果となる四元数群の出力 ***/
-	result = hopf2quat( S3_Points );
+	result = hopf2quat( S3_Points, resol );
+	S3_Points.clear(); Healpix_Points.clear();
 
 
 	/* 返り値 */

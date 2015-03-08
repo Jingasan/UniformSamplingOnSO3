@@ -14,15 +14,12 @@ project( UniformSamplingOnSO3 )
 # 生成される実行ファイル名とその元となるソースプログラム名
 add_executable( UniformSamplingOnSO3
 Code/main.cpp
-Code/connectLayeredGrids.cpp
-Code/generateRfromQuaternion.cpp
+Code/simple_grid.cpp
+Code/pix2ang_nest.cpp
+Code/nside2npix.cpp
+Code/mk_pix2xy.cpp
 Code/grid_s1.cpp
 Code/hopf2quat.cpp
-Code/layered_grid.cpp
-Code/mk_pix2xy.cpp
-Code/nside2npix.cpp
-Code/pix2ang_nest.cpp
-Code/simple_grid.cpp
 Code/Configuration.h
 Code/grid_generation.h
 )
